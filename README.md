@@ -1,13 +1,17 @@
 # Typst Development Environment Flake
 
-A Nix flake providing a complete Typst development environment with Typst, TinyMist LSP, and the Besley font family.
+A Nix flake providing a complete Typst development environment with Typst, TinyMist LSP, Hayagriva citation tool, and extensive font collections.
 
 ## What's Included
 
 - **Typst** - The typesetting system
 - **TinyMist** (v0.14.4) - Language Server Protocol for Typst
-- **Besley** - Font family for Typst
-- **Fontconfig** - Configured to use Besley fonts
+- **Hayagriva** (v0.9.1) - CLI tool for citation formatting
+- **Fonts**:
+  - **Besley** - Font family for Typst
+  - **Nerd Fonts** - Complete collection of patched fonts with icons
+  - **Google Fonts** - Complete collection of open-source fonts
+- **Fontconfig** - Configured to use all available fonts
 
 ## Prerequisites
 
@@ -120,21 +124,40 @@ The TinyMist language server is available in the environment. Configure your edi
 which tinymist
 ```
 
+### Use Hayagriva for citation formatting
+
+Hayagriva is a CLI tool for managing and formatting citations:
+
+```bash
+nix develop
+hayagriva --help
+```
+
 ### Check available tools
 
 ```bash
 nix develop
 typst --version
 tinymist --version
+hayagriva --version
 ```
 
 ## Font Configuration
 
-The Besley font family is automatically configured via `FONTCONFIG_FILE`. Typst will be able to use Besley fonts without additional configuration.
+All fonts are automatically configured via `FONTCONFIG_FILE`. Typst will be able to use:
+- **Besley** - Typst's default font family
+- **Nerd Fonts** - All patched fonts with icons (e.g., FiraCode Nerd Font, Hack Nerd Font, etc.)
+- **Google Fonts** - Complete collection of open-source fonts (e.g., Roboto, Open Sans, Lato, etc.)
+
+You can use any of these fonts in your Typst documents without additional configuration.
+
 
 ## License
 
 This flake is provided as-is. Check the licenses of the included packages:
 - Typst: Apache-2.0
 - TinyMist: Check [Myriad-Dreamin/tinymist](https://github.com/Myriad-Dreamin/tinymist)
+- Hayagriva: Apache-2.0
 - Besley: SIL Open Font License
+- Nerd Fonts: Various (mostly MIT/SIL OFL)
+- Google Fonts: Various (mostly SIL OFL)

@@ -46,17 +46,41 @@
               chmod +x $out/bin/tinymist
             '';
           };
+
+        # Hayagriva CLI tool for citation formatting (from nixpkgs)
+        hayagriva = pkgs.hayagriva;
+        # Nerd Fonts - collect all individual nerd-fonts
+        # nerd-fonts is a set of individual font packages
+        allNerdFonts =
+          pkgs.lib.attrsets.collect
+          (x: pkgs.lib.isDerivation x)
+          (
+            if pkgs.lib.isFunction pkgs.nerd-fonts
+            then pkgs.nerd-fonts {}
+            else pkgs.nerd-fonts
+          );
+
+        # Google Fonts - single package containing all Google Fonts
+        allGoogleFonts = [pkgs.google-fonts];
+
         # Base shell configuration shared by all variants
         baseShell = {
-          buildInputs = with pkgs; [
-            typst
-            besley
-            fontconfig
-            tinymist
-          ];
+          buildInputs = with pkgs;
+            [
+              typst
+              besley
+              fontconfig
+              tinymist
+              hayagriva
+            ]
+            ++ allNerdFonts ++ allGoogleFonts;
 
           FONTCONFIG_FILE = pkgs.makeFontsConf {
-            fontDirectories = [pkgs.besley];
+            fontDirectories =
+              [
+                pkgs.besley
+              ]
+              ++ allNerdFonts ++ allGoogleFonts;
           };
         };
       in {
