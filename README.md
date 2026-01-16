@@ -35,13 +35,13 @@ You can use this flake directly from GitHub without cloning:
 
 ```bash
 # Default shell (opens Cursor automatically)
-nix develop github:yourusername/typst-flake
+nix develop github:Accommodus/typst-flake
 
 # Simple shell (no Cursor auto-launch)
-nix develop github:yourusername/typst-flake#simple
+nix develop github:Accommodus/typst-flake#simple
 
 # Manual shell (shows instructions)
-nix develop github:yourusername/typst-flake#manual
+nix develop github:Accommodus/typst-flake#manual
 ```
 
 ### Using in Your Own Flake
@@ -51,7 +51,7 @@ Add this flake as an input in your `flake.nix`:
 ```nix
 {
   inputs = {
-    typst-flake.url = "github:yourusername/typst-flake";
+    typst-flake.url = "github:Accommodus/typst-flake";
     # ... other inputs
   };
 
@@ -75,7 +75,7 @@ Automatically executes `cursor --profile "typst" .` when entering the shell, ope
 ```bash
 nix develop
 # or
-nix develop github:yourusername/typst-flake
+nix develop github:Accommodus/typst-flake
 ```
 
 ### `simple`
@@ -87,7 +87,7 @@ Sets up the environment without any automatic Cursor launch. Just provides a rea
 ```bash
 nix develop .#simple
 # or
-nix develop github:yourusername/typst-flake#simple
+nix develop github:Accommodus/typst-flake#simple
 ```
 
 ### `manual`
@@ -99,7 +99,7 @@ Shows helpful instructions for opening Cursor manually, but doesn't auto-launch 
 ```bash
 nix develop .#manual
 # or
-nix develop github:yourusername/typst-flake#manual
+nix develop github:Accommodus/typst-flake#manual
 ```
 
 ## Examples
