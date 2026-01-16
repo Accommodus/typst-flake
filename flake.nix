@@ -19,7 +19,7 @@
 
         # TinyMist binary from GitHub releases (patched for NixOS)
         tinymist = let
-          version = "0.14.4";
+          version = "0.14.8";
           src = pkgs.fetchurl {
             url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v${version}/tinymist-linux-x64";
             hash = "sha256-gmVlMmWrNWcK/hp+9gxl49/7Dd3nXu9ryndDSKyCYw4=";
